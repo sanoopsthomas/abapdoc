@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="style.css" rel="stylesheet"> 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -82,15 +83,15 @@
         </div>        
         </section>
         <section class="about bg-light">
-                <?php
-                $countdown = strtotime("2019-10-04 21:00:00"); 
-                $current=strtotime('now');
-                $countdown1 =($countdown-$current);
-                $days=floor($countdown1 / (60*60*24));
-                echo "<h3 style ="color:red;text-align:center;">"."$days days left on UPX Infosession"."<h3>";
-                ?>
-               <h3 >3 days left on UPX Infosession<h3>
-        </section>
+            <script>
+            var c = new Date("2019-10-04");
+            var d = new Date();
+            var t = Date.parse(c) - Date.parse(d);
+            var days = Math.floor( t/(1000*60*60*24) );
+            alert("only "+ days +" days remaining to register");
+            document.write(" <h1>only "+days+" days remaining to register</h1>");
+            </script>       
+</section>
         <h1 style="text-align: center">SPEAKERS</h1>
         <section class="about bg-spk">        
         <div class="circle">
