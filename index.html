@@ -1,124 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="style.css" rel="stylesheet"> 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet"> 
-    </head>
+<html>
+<head>
+<title>SAP ABAP Topics</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<div id="container">
+<div id="header">
+<h1>SAP ABAP Topics</h1>
+</div>
+<div id="content">
+<div id ="nav">
+<h3>ABAP Topics</h3>
 
-    <body>
-        <header class="showcase">
-            <div class="content">
-                <img src="th.jpg" class="logo" alt="">
-                <div class="title">
-                    UPX|INFOSESSION
-                </div>
-                <div class="text">
-                    <h3 style="color: cornsilk">6 MONTH CERTIFICATION PROGRAM 
-                    IN BIG DATA & DATA SCIENCE</h2>
-                </div>     
-                <DIV>
-                    <H4 style ="color:coral;">INTERACTIVE SESSION DISCUSSING COURSE STRUCTURE CARRICULAM and
-                        THINGS ABOUT UPCOMING BATCHES
-                    </H3>
-                </DIV>
-            </div>
-        </header>
-<!--next section-->
-        <section class="services">
-            <div class="container grid-3">
-                <div>
-                        <i class="fa fa-chalkboard-teacher fa-3x"></i>
-                    <p>Online live & interactive sessions with ue case theory and project</p>
-                </div>
-                <div>
-                        <i class="fas fa-lightbulb fa-3x"></i>
-                        <p>Hands on Experience with real world datasetd</p>
-                    </div>
-                    <div>
-                            <i class="fas fa-award fa-3x"></i>
-                            <p>Industry recognised cerificate by TECH MAHINDRA</p>
-                        </div>
-            </div>
-        </section>
-<!--Next msection-->
-        <section class="about bg-light">
-            <div class="container">
-                <div class="grid-2">
-                    <div class="center">
-                        <i class="fas fa-laptop-code fa-10x"></i>
-                    </div>
-                    <div>
-                        <h3>About UPX Academy</h3>
-                        <p> In todays digital age  data has the potential to transform businesses through 
-                            insight and analytics .However this power still awaits to be fully harnessed 
-                            As a world class educational venture we recognize this challenge
-                        </p>                    
-                    </div>
-                </div>
-            </div>
-        </section>
-<section>
-        <div class="contact-form">
-                <h3>For Enquiries</h3>
-                <h1>1800-123-1260</h1>
-                <h3>ONLINE & FREE</h3>
-                <h4>---------------------</h4>
-                <h3>4th October 2019</h3>
-                <div class="txtb">
-                <label>Full Name</label>
-                <input type="text" name="" value="" placeholder="Enter your name">
-                </div>
-                <div class="txtb">
-                <label>Email</label>
-                <input type="text" name="" value="" placeholder="Enter your Email">
-                </div>
-                <div class="txtb">
-                <label>Message</label>
-                <input type="text" name="" value="" placeholder="Enter your Message">
-                <a class="btn">Save My Post</a>
-        </div>        
-        </section>
-        <section class="about bg-light">
-            <script>
-            var c = new Date("2019-10-04");
-            var d = new Date();
-            var t = Date.parse(c) - Date.parse(d);
-            var days = Math.floor( t/(1000*60*60*24) );
-            alert("only "+ days +" days remaining to register");
-            document.write(" <h1>only "+days+" days remaining to register</h1>");
-            </script>       
-</section>
-        <h1 style="text-align: center">SPEAKERS</h1>
-        <section class="about bg-spk">        
-        <div class="circle">
-            <h3></h3>
-        </div>
-        </section>        
-        <section class="bg-light">
-            <h1 style="text-align: center">Our Courses</h1>
-                <div class="divbox">
-                    <h2 style="color: cornsilk;text-align: center;">BIG DATA</h2>
-                    <h3 style ="color:cornsilk;text-align:center;">HADOOP APACHE SPARK MONGODB</h3>
-                    <a class="btn" style="text-align:center;">Know More</a>
-                </div>
-                <div class="divbox">
-                        <h2 style="color: cornsilk;text-align: center;">DATA SCIENCE</h2>
-                        <h3 style ="color:cornsilk;text-align:center;">DATA ANALYTICS MACHINE LEARNING TABLEAU</h3>
-                        <a class="btn" style="text-align:center;">Know More</a>
-                    </div>
-                    <div class="divbox">
-                            <h2 style="color: cornsilk;text-align: center;">BIG DATA</h2>
-                            <h3 style ="color:cornsilk;text-align:center;">HADOOP APACHE SPARK MONGODB</h3>
-                            <a class="btn" style="text-align:center;">Know More</a>
-                        </div>
-        </section>
-        <footer class="left bg-dark">
-            <p>www.upxacademy.com</p>
-            <p>Email:info@upxacademy.com</p>
-        </footer>
-    </body>
+	<ul>
+		<li><a class="selected" href ="#Data Dictionary">Data Dictionary(SE11)</a> </li>
+		<li><a class="selected" href ="#reports">Reports</a></li>
+		<li><a class="selected" href ="#bdc">BDC</a></li>
+		<li><a class="selected" href ="#mpp">MPP</a></li>
+	</ul>
+	<h3>My Profile</h3>
+
+	<ul>
+		<li><a class="selected" href ="sap.pdf">SAP ABAP Training Certificate</a> </li>
+		<li><a class="selected" href ="resume.html">My Resume</a></li>
+	</ul>
+	</div>
+<div id="main">
+	<h2><a>DATA Dictionary</a></h2>
+<p>
+	<h3>Components in Data Dictionary</h3>
+	<ol>
+		<li>Database Tables</li>
+		<p>Tables can be defined independently of the database in the ABAP Dictionary</p>
+		<li>View</li>
+		<p>A view is logical view on one or more table that is a view not physically stored</p>
+		<ul>
+			<li><h3>Types Of View</h3></li>
+			<li>Database View</li>
+			<li>Projection View</li>
+			<li>Maintenance View</li>
+			<li>Help View</li>
+		</ul>
+	<li>Data Type</li>
+		<p>It is a set of properties 'Data Type' can't holds the data it defines the type of data to be stored and size of memory
+		to be allocated of a variable.
+		<ul>
+		<li>Data Element</li>
+		<li>Structure</li>
+		<li>Table Type</li>
+	   </ul>
+		</p>
+		<li>Type Group</li>
+		<p>It can be used to pool definition of types into one group<br/>
+			For Example "Type-pools : SLIS"</p>
+		<li>Domain</li>
+		<p>The Domain describes the technical attributes of a field such as</p>
+		<ol>
+			<li>Data Type</li>
+			<li>Number Of Positions in a field</li>
+			<li>Value Range</li>
+		</ol>
+		<br/>
+		<li>Search Help</li>
+		<p>It is used to provide list of possible input values for a variable</p>
+		<p>Two Type Of Search Help</p>
+		<ol>
+			<li>Elementary Search Help</li>
+			<li>Collective Search Help</li>
+		</ol>
+		<li>Lock Object</li>
+		<p>It is used to lock or release table access from other users</p>
+		<ul>
+			<li>Three Different Type Lock Object</li>
+			<li>Write Lock : only one user can access table at a time</li>
+			<li>Read Lock : multiple users can read at a time</li>
+			<li>Exclusive Lock : Lock data only for once with in a transaction</li>
+		</ul>
+	</ol>
+<img src="img/ddic.jpg">
+
+</p>
+	<h2><a name="reports">REPORTS</a></h2>
+<p>
+	Reports are executable programs whose function is to retrieve data from database and display it or print it for the user.
+	all end user often need some information to look up, depending upon it various management decision are taken or to just see
+	business results or simply continue work.
+	<ul>
+		<li>Classical Report</li>
+		<p>Here Total Output data from a program will be displayed with in one Report Only</p>
+	    <li>Interactive Report</li>
+		<p>Here we can generate a chain of linked Reports from single program</p>
+		<li>ALV Reports</li>
+		<p>ABAP LIST VIEWER : For adding additional or extra display properties for the Reports
+		we can display our reports more effectively by standard data type and function module
+		In ALV we have TWO Display Mode
+	    <ol>
+		<li>GRID : REUSE_ALV_GRID_DISPLAY</li>
+		<li>LIST : REUSE_ALV_LIST_DISPLAY</li>
+		</ol>
+	<br/>
+	     <h4>Hierarchical ALV Reports</h4>
+			<p>To display data of two internal tables records in hierarchical format
+				<ul>
+					<li>HEADER RECORDING FIRST</li>
+					<li>CORRESPONDING ITEMS NEXT</li>
+				</ul>
+				<img src="img/hier-alv.jpg">
+		</p>
+		<h4>Object Oriented ALV Reports</h4>
+		<p>In Object Oriented ALV Reports we use two Standard Class
+		<ul>
+			<li>CL_GUI_CUSTOM_CONTAINER</li>
+			<li>CL_GUI_ALV_GRID</li>
+		<P>
+		We use one standard method
+			<li>SET_TABLE_FOR_FIRST_DISPLAY</li>
+		</P>
+	   <P><img src="img/OOALV.jpg"><P>
+
+        </ul>
+		</p>
+
+   </ul>
+	</p>
+	<h2><a name="bdc">BDC</a></h2>
+	<p>
+		Batch Data Communication, is the process of transferring data from a non-SAP system to SAP system.
+		<ol>
+		<li>BDC with Call Transaction</li>
+		<li>BDC with Session Method</li>
+		<table border="1">
+			<tr>
+				<th>CALL TRANSACTION</th>
+				<th>SESSION METHOD</th></tr>
+			<tr>
+				<td>SY-SUBRC return for each execution</td>
+			   <td>SY-SUBRC can't return</td></tr>
+				<tr><td>Error Handling Possible</td>
+				<td>It return complete log file regarding <br>
+				   all transaction</td></tr></table>
+		<li>LSMW</li></ol>
+	<br/>
+	<P><img src="img/bdc.jpg"></P>
+	<h2><a name="mpp">MPP</a></h2>
+	<p>
+		In SAP we can design GUI for ABAP applications by using Module Pool Programming only.<br/>
+		In MPP we use dynamic screens(0001-9999).<br/>
+		MPP program must be executed only through transaction code(TCode : SE80)<br>
+		<ul><h4>Events Used In MPP</h4>
+			<li>Process Before Output</li>
+			<li>Process After Input</li>
+			<li>Process On Value Request</li>
+			<li>Process On Help Request</li>
+		</ul>
+	</p>
+	<P><img src="img/mpp.jpg"></P>
+</div>
+<div id="footer">
+Copyright &copy; 2020
+</div>
+</body>
 </html>
