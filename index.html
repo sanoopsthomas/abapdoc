@@ -1,8 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
 <title>SAP ABAP Topics</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
+<style>
+#cv{
+		background-color : lightgrey;
+		width  : 450px;
+		border : 1px solid blue;
+		padding : 50px;
+		margin : 20px;
+		}
+</style>
 </head>
 <body>
 <div id="container">
@@ -23,7 +32,7 @@
 
 	<ul>
 		<li><a class="instructure_file_link instructure_scribd_file auto_open" href ="sap.pdf">SAP ABAP Training Certificate</a> </li>
-		<li><a class="selected" href ="resume.html">My Resume</a></li>
+		<li><a class="instructure_file_link instructure_scribd_file auto_open" href ="resume.pdf">My Resume</a></li>
 	</ul>
 	</div>
 <div id="main">
@@ -78,9 +87,8 @@
 			<li>Exclusive Lock : Lock data only for once with in a transaction</li>
 		</ul>
 	</ol>
-<img src="ddic.jpg">
-
-</p>
+<img src="ddic.jpg"><br/>
+	</p>
 	<h2><a name="reports">REPORTS</a></h2>
 <p>
 	Reports are executable programs whose function is to retrieve data from database and display it or print it for the user.
@@ -107,7 +115,84 @@
 					<li>CORRESPONDING ITEMS NEXT</li>
 				</ul>
 				<img src="hier-alv.jpg">
-		</p>
+	</p>
+		<div id="cv">
+		<h3><u>Hierarchical ALV Reports For VBAK VBAP Table</u></h3>
+			<font color="blue" size="2px">
+
+*&---------------------------------------------------------------------*<br/>
+*& Report  ZDEMO_ALV_HIER1<br/>
+*&<br/>
+*&---------------------------------------------------------------------*<br/>
+*&<br/>
+*&<br/>
+*&---------------------------------------------------------------------*<br/>
+REPORT  ZDEMO_ALV_HIER1 NO STANDARD PAGE HEADING.<br/>
+TYPE-POOLS : SLIS.<br/>
+TYPES : BEGIN OF S1,<br/>
+        VBELN TYPE VBELN,<br/>
+        ERDAT TYPE ERDAT,<br/>
+        ERZET TYPE ERZET,<br/>
+        END OF S1.<br/>
+
+TYPES : BEGIN OF S2,<br/>
+        VBELN TYPE VBELN,<br/>
+        END OF S2.<br/>
+
+        DATA IT TYPE TABLE OF S1.<br/>
+        DATA IT1 TYPE TABLE OF S1.<br/>
+
+        DATA ITF TYPE SLIS_T_FIELDCAT_ALV.<br/>
+        DATA WA LIKE LINE OF ITF.<br/>
+        DATA WAF TYPE SLIS_KEYINFO_ALV.<br/>
+
+        WA-col_pos = 1.<br/>
+        WA-fieldname = 'VBELN'.<br/>
+        WA-tabname = 'IT'.<br/>
+        APPEND WA TO ITF.<br/>
+        CLEAR WA.<br/>
+
+        WA-col_pos = 2.<br/>
+        WA-fieldname = 'ERDAT'.<br/>
+        WA-tabname = 'IT'.<br/>
+        APPEND WA TO ITF.<br/>
+        CLEAR WA.<br/>
+
+        WA-col_pos = 3.<br/>
+        WA-fieldname = 'ERZET'.<br/>
+        WA-tabname = 'IT'.<br/>
+        APPEND WA TO ITF.<br/>
+        CLEAR WA.<br/>
+
+        WA-col_pos = 4.<br/>
+        WA-fieldname = 'VBELN'.<br/>
+        WA-tabname = 'IT1'.<br/>
+        APPEND WA TO ITF.<br/>
+        CLEAR WA.<br/>
+
+        WAF-header01 = 'VBELN'.<br/>
+        WAF-item01 = 'VBELN'.<br/>
+	SELECT * <br/>
+	       FROM VBAK INTO CORRESPONDING FIELDS OF TABLE IT<br/>
+	       UP TO 10 ROWS.<br/>
+	IF IT IS NOT INITIAL.<br/>
+	SELECT * <br/>
+	       FROM VBAP INTO CORRESPONDING FIELDS OF TABLE IT1<br/>
+	       FOR ALL ENTRIES IN IT<br/>
+           WHERE VBELN = IT-VBELN.<br/>
+	ENDIF.<br/>
+	CALL FUNCTION 'REUSE_ALV_HIERSEQ_LIST_DISPLAY'<br/>
+          EXPORTING<br/>
+            I_CALLBACK_PROGRAM             = SY-CPROG<br/>
+            IT_FIELDCAT                    = ITF<br/>
+            I_TABNAME_HEADER               = 'IT'<br/>
+            I_TABNAME_ITEM                 = 'IT1'<br/>
+            IS_KEYINFO                     = WAF<br/>
+          TABLES<br/>
+            T_OUTTAB_HEADER                = IT<br/>
+            T_OUTTAB_ITEM                  = IT1.<br/>
+			</font>
+	</div>
 		<h4>Object Oriented ALV Reports</h4>
 		<p>In Object Oriented ALV Reports we use two Standard Class
 		<ul>
@@ -143,6 +228,96 @@
 		<li>LSMW</li></ol>
 	<br/>
 	<P><img src="bdc.jpg"></P>
+	<div id="cv">
+		<h3><u>CODE FOR BDC PROGRAM</u></h3>
+			<font color="blue" size="2px">
+		REPORT  ZTAM_BDC_CT NO STANDARD PAGE HEADING.<br/>
+		INCLUDE ZDECLARATIONS.<br/>
+		INCLUDE ZFM_GUI_UPLOAD.<br/>
+		INCLUDE ZBDC_CT_PGM.
+		</font>
+
+	</div>
+
+	<div id="cv">
+		<font color="blue" size="2px">
+*&---------------------------------------------------------------------*<br/>
+			*&  Include           ZDECLARATIONS<br/>
+*&---------------------------------------------------------------------*<br/>
+TYPES :BEGIN OF S1,<br/>
+  BANKS TYPE BANKS,<br/>
+  BANKL TYPE BANKL,<br/>
+  BANKA TYPE BANKA,<br/>
+  END OF S1.<br/>
+  DATA WA TYPE S1.<br/>
+  DATA IT TYPE TABLE OF S1.<br/>
+  DATA WA1 TYPE BDCDATA.<br/>
+  DATA IT1 TYPE TABLE OF BDCDATA.
+		</font>
+
+	</div>
+	<div id="cv">
+		<font color="blue" size="2px">
+*&---------------------------------------------------------------------*<br/>
+*&  Include           ZFM_GUI_UPLOAD<br/>
+*&---------------------------------------------------------------------*<br/>
+CALL FUNCTION 'GUI_UPLOAD'<br/>
+  EXPORTING<br/>
+    FILENAME                      = 'D:\BANK.TXT'<br/>
+    HAS_FIELD_SEPARATOR           = 'X'<br/>
+  TABLES<br/>
+    DATA_TAB                      = IT.<br/>
+IF SY-SUBRC EQ 0.<br/>
+  WRITE :/ 'SUCCESS'.<br/>
+ENDIF.<br/>
+		</font>
+
+	</div>
+	<div id="cv">
+		<font color="blue" size="2px">
+*&---------------------------------------------------------------------*<br/>
+*&  Include           ZBDC_CT_PGM<br/>
+*&---------------------------------------------------------------------*<br/>
+LOOP AT IT INTO WA.<br/>
+
+  WA1-PROGRAM  = 'SAPMF02B'.<br/>
+  WA1-DYNPRO   = '0100'.<br/>
+  WA1-DYNBEGIN = 'X'.<br/>
+
+  APPEND WA1 TO IT1.<br/>
+  CLEAR WA1.<br/>
+
+  WA1-FNAM = 'BDC_CURSOR'.<br/>
+  WA1-FVAL = 'BNKA-BANKL'.<br/>
+
+  APPEND WA1 TO IT1.<br/>
+  CLEAR WA1.<br/>
+
+  WA1-FNAM = 'BDC_OKCODE'.<br/>
+  WA1-FVAL = '/00'.<br/>
+
+  APPEND WA1 TO IT1.<br/>
+  CLEAR WA1.<br/>
+
+  WA1-FNAM = 'BNKA-BANKS'.<br/>
+  WA1-FVAL = WA-BANKS.<br/>
+
+  APPEND WA1 TO IT1.<br/>
+  CLEAR WA1.<br/>
+
+  WA1-FNAM = 'BNKA-BANKL'.<br/>
+  WA1-FVAL = WA-BANKL.<br/>
+
+  APPEND WA1 TO IT1.<br/>
+  CLEAR WA1.<br/>
+	-------------------------------------------<br/>
+	-------------------------------------------<br/>
+  CALL TRANSACTION 'FI01' USING IT1 MODE 'A'.<br/>
+  REFRESH IT1.<br/>
+  ENDLOOP.<br/>
+		</font>
+
+	</div>
 	<h2><a name="mpp">MPP</a></h2>
 	<p>
 		In SAP we can design GUI for ABAP applications by using Module Pool Programming only.<br/>
@@ -156,8 +331,83 @@
 		</ul>
 	</p>
 	<P><img src="mpp.jpg"></P>
+	<div id="cv">
+		<font color="blue" size="2px">
+			<h3><u>Module Pool Program Flow Logic Editor</u></h3>
+PROCESS BEFORE OUTPUT.<br/>
+ MODULE STATUS_0001.<br/>
+ FIELD ZSIGNUP-USERNAME MODULE M1.<br/>
+PROCESS AFTER INPUT.<br/>
+ MODULE USER_COMMAND_0001.<br/>
+ MODULE CAN AT EXIT-COMMAND.
+		</font>
+	</div>
+	<div id="cv">
+		<font color="blue" size="2px">
+			<h3><u>Module Pool Program (SE 80)</u></h3>
+*&---------------------------------------------------------------------*<br/>
+*& Module Pool       ZPROJECT<br/>
+*&<br/>
+*&---------------------------------------------------------------------*<br/>
+*&<br/>
+*&<br/>
+*&---------------------------------------------------------------------*<br/>
+PROGRAM  ZPROJECT.<br/>
+TABLES ZSIGNUP.<br/>
+*&---------------------------------------------------------------------*<br/>
+*&      Module  USER_COMMAND_0001  INPUT<br/>
+*&---------------------------------------------------------------------*<br/>
+*       text<br/>
+*----------------------------------------------------------------------*<br/>
+MODULE USER_COMMAND_0001 INPUT.<br/>
+CASE SY-UCOMM.<br/>
+  WHEN 'SUB'.<br/>
+    INSERT ZSIGNUP.<br/>
+    IF SY-SUBRC = 0.<br/>
+      MESSAGE 'ACCOUNT CREATED SUCCESSFULLY' TYPE 'I'.<br/>
+    ELSE.<br/>
+      MESSAGE 'USER NAME ALREADY EXIST' TYPE 'E'.<br/>
+    ENDIF.<br/>
+  WHEN 'CAN'.<br/>
+    LEAVE PROGRAM.<br/>
+  WHEN 'RST'.<br/>
+    CLEAR ZSIGNUP.<br/>
+  WHEN OTHERS.<br/>
+    MESSAGE 'COMING ZOON' TYPE 'W'.<br/>
+ENDCASE.<br/>
+ENDMODULE.                 " USER_COMMAND_0001  INPUT<br/>
+*&---------------------------------------------------------------------*<br/>
+*&      Module  STATUS_0001  OUTPUT<br/>
+*&---------------------------------------------------------------------*<br/>
+*       text<br/>
+*----------------------------------------------------------------------*<br/>
+MODULE STATUS_0001 OUTPUT.<br/>
+  SET PF-STATUS 'ZPF'.<br/>
+ENDMODULE.                 " STATUS_0001  OUTPUT<br/>
+*&---------------------------------------------------------------------*<br/>
+*&      Module  CAN  INPUT<br/>
+*&---------------------------------------------------------------------*<br/>
+*       text<br/>
+*----------------------------------------------------------------------*<br/>
+MODULE CAN INPUT.<br/>
+IF SY-UCOMM EQ 'CAN'.<br/>
+  LEAVE PROGRAM.<br/>
+ENDIF.<br/>
+ENDMODULE.                 " CAN  INPUT<br/>
+*&---------------------------------------------------------------------*<br/>
+*&      Module  M1  OUTPUT<br/>
+*&---------------------------------------------------------------------*<br/>
+*       text<br/>
+*----------------------------------------------------------------------*<br/>
+MODULE M1 OUTPUT.<br/>
+SELECT SINGLE COUNT(*) FROM ZSIGNUP INTO ZSIGNUP-USERNAME.<br/>
+ENDMODULE.                 " M1  OUTPUT<br/>
+		</font>
+
+	</div>
 </div>
-<div id="footer">
+
+	<div id="footer">
 Copyright &copy; 2020
 </div>
 </body>
